@@ -1,10 +1,10 @@
 
 public class PercolationUF implements IPercolate {
 	boolean[][] myGrid;
-	int myOpenCount;
+	int myOpenCount = 0;
 	IUnionFind myFinder;
-	int VTOP;
-	int VBOTTOM;
+	private int VTOP;
+	private int VBOTTOM;
 
 	public PercolationUF(int size, IUnionFind finder) {
 		myGrid = new boolean[size][size];
@@ -21,6 +21,7 @@ public class PercolationUF implements IPercolate {
 
 	@Override
 	public void open(int row, int col) {
+		myOpenCount += 1;
 		if (!inBounds(row,col)) {
 			throw new IndexOutOfBoundsException(
 					String.format("(%d,%d) not in bounds", row,col));
@@ -71,7 +72,7 @@ public class PercolationUF implements IPercolate {
 
 	@Override
 	public int numberOfOpenSites() {
-		return myFinder.size();
+		return myOpenCount;
 	}
 
 	private boolean inBounds(int row, int col) {
