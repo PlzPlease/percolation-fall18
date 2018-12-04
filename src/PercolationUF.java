@@ -21,12 +21,12 @@ public class PercolationUF implements IPercolate {
 
 	@Override
 	public void open(int row, int col) {
-		myOpenCount += 1;
 		if (isOpen(row,col)) return;
 		if (!inBounds(row,col)) {
 			throw new IndexOutOfBoundsException(
 					String.format("(%d,%d) not in bounds", row,col));
 		}
+		myOpenCount += 1;
 		myGrid[row][col] = true;
 		int encode = row*myGrid.length+col;
 		if(row==0) myFinder.union(encode, VTOP);
