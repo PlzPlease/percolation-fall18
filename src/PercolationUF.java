@@ -3,8 +3,8 @@ public class PercolationUF implements IPercolate {
 	boolean[][] myGrid;
 	int myOpenCount;
 	IUnionFind myFinder;
-	private final int VTOP;
-	private final int VBOTTOM;
+	int VTOP;
+	int VBOTTOM;
 
 	public PercolationUF(int size, IUnionFind finder) {
 		myGrid = new boolean[size][size];
@@ -21,7 +21,7 @@ public class PercolationUF implements IPercolate {
 
 	@Override
 	public void open(int row, int col) {
-		if (! inBounds(row,col)) {
+		if (!inBounds(row,col)) {
 			throw new IndexOutOfBoundsException(
 					String.format("(%d,%d) not in bounds", row,col));
 		}
@@ -47,7 +47,7 @@ public class PercolationUF implements IPercolate {
 
 	@Override
 	public boolean isOpen(int row, int col) {
-		if (! inBounds(row,col)) {
+		if (!inBounds(row,col)) {
 			throw new IndexOutOfBoundsException(
 					String.format("(%d,%d) not in bounds", row,col));
 		}
@@ -56,7 +56,7 @@ public class PercolationUF implements IPercolate {
 
 	@Override
 	public boolean isFull(int row, int col) {
-		if (! inBounds(row,col)) {
+		if (!inBounds(row,col)) {
 			throw new IndexOutOfBoundsException(
 					String.format("(%d,%d) not in bounds", row,col));
 		}
