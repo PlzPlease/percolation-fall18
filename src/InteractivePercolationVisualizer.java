@@ -19,8 +19,8 @@ public class InteractivePercolationVisualizer {
 			N = Integer.parseInt(args[0]);
 		}
 
-		IPercolate perc = new PercolationDFS(N);
-		//IPercolate perc = new PercolationUF(new QuickFind(),N); 
+		//IPercolate perc = new PercolationBFS(N);
+		IPercolate perc = new PercolationUF(new QuickFind(),N); 
 
 		System.out.println(N);
 

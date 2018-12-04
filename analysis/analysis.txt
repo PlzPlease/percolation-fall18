@@ -1,22 +1,57 @@
-Your name
-Your netid
-
-Copy/Paste results from PercolationStats using PercolationDFS
-
+Your Promvarat Pradit
+Your pp164
 
 Copy/Paste results from PercolationStats using PercolationDFSFast
+simulation data for 20 trials
+grid	mean	stddev	time
+100	0.593	0.014	0.049
+200	0.591	0.010	0.073
+400	0.590	0.006	0.429
+800	0.594	0.004	2.944
+Exception in thread "main" java.lang.StackOverflowError
 
 
 Copy/Paste results from PercolationStats using PercolationBFS
+simulation data for 20 trials
+grid	mean	stddev	time
+100	0.593	0.014	0.048
+200	0.591	0.010	0.078
+400	0.590	0.006	0.478
+800	0.594	0.004	3.114
+1600	0.592	0.002	18.243
+3200	0.593	0.001	109.816
 
 
 Copy/Paste results from PercolationStats using PercolationUF 
 with the QuickUWPC UnionFind implementation.
+simulation data for 20 trials
+grid	mean	stddev	time
+100	0.593	0.014	0.043
+200	0.591	0.010	0.068
+400	0.590	0.006	0.363
+800	0.594	0.004	2.200
+1600	0.592	0.002	10.707
+3200	0.593	0.001	57.490
 
-1. How does doubling the grid size affect running time (keeping # trials fixed)
-
+1. How does doubling the grid size affect runtime (keeping # trials fixed)
+Doubling the grid size increase runtime around 5-6 folds. 
+This is because grid dimention is size*size so the cost is O(N^2)
 
 2. How does doubling the number of trials affect running time.
-
+simulation data for 40 trials
+grid	mean	stddev	time
+100	0.594	0.015	0.056
+200	0.591	0.009	0.125
+400	0.591	0.005	0.674
+800	0.593	0.004	4.136
+1600	0.593	0.002	21.263
+3200	0.593	0.001	106.520
+Doubling the number of trials increase runtime around 2 folds.
+This is because #trials determine how many simulation will be run per 1 size grid which is O(N).
 
 3. Estimate the largest grid size you can run in 24 hours with 20 trials. Explain your reasoning.
+24 hours = 1,440 mins = 86,400 secs.
+Assuming each doubling increase runtime by 5 folds.
+At 1,600 grid size, the system took 10 seconds. 
+So, the answer is (2^(log base 5 of (86400/10)))*1600 which is approximately
+(2^(5.632))*1600 = 79,300
